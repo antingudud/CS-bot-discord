@@ -1,4 +1,4 @@
 {
 	"token":"your.token",
-	"database_url":"the/url"
+	"server_address":"the/url"
 }
