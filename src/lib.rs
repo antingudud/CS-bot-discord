@@ -220,7 +220,8 @@ impl EventHandler for Handler {
         };
 
         if thr_id.is_none() {
-            // return
+            println!("[INFO] at Thread Delete event handler. Deleted thread id does not match with any stored id.");
+            return;
         }
 
         // if true, remove the deleted thread from the local tele_id and disc_id
@@ -256,6 +257,7 @@ impl EventHandler for Handler {
                     dw.disc_id = Some(cp_disc_id.clone());
                 },
                 None => {
+                    println!("[LOG] at Thread Delete event handler. Exception at updating global data, stored data returns None.");
                 }
             }
             let tele = dw.tele_id.clone();
@@ -263,7 +265,9 @@ impl EventHandler for Handler {
                 Some(_x) => {
                     dw.tele_id = Some(cp_tele_id.clone());
                 },
-                None => {}
+                None => {
+                    println!("[LOG] at Thread Delete event handler. Exception at updating global data, stored data returns None.");
+                }
             }
         }
     }
